@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/vendor/bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static '/vendor/bootstrap-icons/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{% static '/vendor/boxicons/css/boxicons.css' %}">
+    <link rel="stylesheet" href="{% static '/css/main.css' %}">
+    <link rel="stylesheet" href="{% static '/vendor/nouislider/nouislider.min.css' %}">
+</head>
+</head>
+<body>
+
+    <div class="main__content">
+        <div class="navBar">
+            <div class="container">
+                <div class="header">
+
+                    <div class="image">
+                        <img src="{% static '/images/profile-img1.jpg' %}" alt="" class="img-fluid rounded">
+                    </div>
+                    <br>
+                    <div class="userProps">
+                        <h3>{{ username }}</h3>
+                        <p>{{ email }}</p>
+                    </div>
+                </div>
+                <br>
+                <ul class="nav-options">
+                    <li><a href="/home/">Home</a></li>
+                    <li><a href="/manage/houses/" class="nav-active">Manage Houses</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="overlay hidden">
+                <div class="add-house-modal">
+                    <div class="container">
+                        <form class="add__house" action="/add/house/" id="addHouse" method="post">
+                            <div class="row__one">
+                                <div class="form__col" id="bedrooms">
+                                    <label for="bedrooms" class="required">BEDROOMS</label>
+                                    <input type="number" class="row__input" id ="bedrooms" name="bedrooms">
+                                </div>        
+                                <div class="form__col">
+                                    <label for="sqrlr" class="required">LIVING ROOM <i>SQUARE METRES</i></label>
+                                    <input type="number" class="row__input" id = "sqrlr" name ="sqrlr">
+                                </div>
+                                <div class="form__col" id = "yard">
+                                    <label for="sqryd" class="required">YARD <i>SQUARE METRES</i></label>
+                                    <input type="number" class="row__input" id = "sqryd" name ="sqryd">
+                                </div>
+                                <div class="form__col radio__group">
+                                    <label for="">NATURAL VIEW</label>
+                                    <div class="form-radio-item">
+                                        <input type="radio" name="view" value="yes" id="yes">
+                                        <label for="cash">Yes</label>
+                                        <span class="check"></span>
+                                    </div>
+                                    <div class="form-radio-item">
+                                        <input type="radio" name="view" id="no" value="no"  checked>
+                                        <label for="cheque">No</label>
+                                        <span class="check"></span>
+                                    </div>
+                                </div>
+                                <div class="form__col" id= "house-condition">
+                                    <label>CONDITION
+                                    </label>
+                                    <div class="price_slider ui-slider ui-slider-horizontal">
+                                        <div id="slider-margin"></div>
+                                        <span class="donate-value" id="value-lower"></span>
+                                    </div>
+                                </div>
+                               
+                                
+                            </div>
+                            <div class="row__two">
+                                <div class="form__col">
+                                    <label for="bathrooms" class="required">BATHROOMS</label>
+                                    <input type="number" class="row__input" id="bathrooms" name="bathrooms">
+                                </div>
+                                <div class="form__col radio__group">
+                                    <label for="">WATER FRONT</label>
+                                    <div class="form-radio-item">
+                                        <input type="radio" name="option" value="yes" id="yes">
+                                        <label for="cash">Yes</label>
+                                        <span class="check"></span>
+                                    </div>
+                                    <div class="form-radio-item">
+                                        <input type="radio" name="option" id="no" value="no"  checked>
+                                        <label for="cheque">No</label>
+                                        <span class="check"></span>
+                                    </div>
+                                </div>
+                                <div class="form__col">
+                                    <label for="yearbuilt" class="required">YEAR BUILT</label>
+                                    <input type="number" class="row__input" name = "yearbuilt" id = "yearbuilt"> 
+                                </div>
+                                <div class="form__col">
+                                    <label for="price" class="required">PRICE</label>
+                                    <input type="number" class="row__input" id = "price" name="price">
+                                </div>
+                                <div class="form__col">
+                                    <label for="yearrenno" class="" class="required">YEAR RENOVATED</label>
+                                    <input type="number" class="row__input" id = "yearrenno" value="0">
+                                </div>
+                             
+                                <div class="button__row">
+                                    <button class="btn est__price" type="submit">Predict</button>
+                                    <Button class="btn reset" type="button" id = "close-big-modal">Cancel</Button>
+                                </div>  
+                                <br><br>        
+                                <div class="alert alert-danger err__callback hidden" role="alert">
+                                    An error occured, review your details and try again
+                                </div>              
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="overlay hidden" id = "sell-house-overlay">
+                <div class="sell-house">
+                    <div class="form__col">
+                        <label for="price_">SELLING PRICE</label>
+                        <input type="text" class="row__input" name = "price_" id = "price_"> 
+                        <input type="hidden"  name = "house_id" id = "house_id"> 
+
+                        <br>
+                        <div class="button__row">
+                            <button class="btn est__price" type="button" id ="sell-house">Sell</button>
+                            <Button class="btn reset" type="button" id= "close-sell-modal">Cancel</Button>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+            <h1 class="text-center">Manage House</h1>
+                <div class="btn-tabs">
+                    <div class="btn  btn-tab active">
+                        <b>Houses</b>
+                    </div>
+                    <div class="btn  btn-tab">
+                        <b>Analytics</b>
+                    </div>
+                </div>
+            <div class="container" id = "manage-houses">
+                <div class="add-house-btn">
+                    <button type="button" id = "addHouseBtn" class="btn est__price">Add House</button>
+                </div>
+                <br><br>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Bedrooms</th>
+                        <th scope="col">Living Room</th>
+                        <th scope="col">Yard Size</th>
+                        <th scope="col">Natural View</th>
+                        <th scope="col">Conditions</th>
+                        <th scope="col">Bathrooms</th>
+                        <th scope="col">Waterfront</th>
+                        <th scope="col">Bathrooms</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in houseData%}
+                        <tr>
+                            <th>{{i.bedrooms}}</th>
+                            <td>{{i.living_room}}</td>
+                            <td>{{i.yard}}</td>
+                            <td>{{i.natural_view}}</td>
+                            <td>{{i.condition}}</td>
+                            <td>{{i.bathrooms}}</td>
+                            <td>{{i.waterfront}}</td>
+                            <td>{{i.bathrooms}}</td>
+                            <td>
+                                <div class="row">
+                                    <div class="btn-group">
+                                        <m class="hidden">{{i.price}}</m>
+                                        <button class="btn btn-success sellHouse">Sell</button>
+                                        <button class="btn btn-danger">Delete</button>
+                                        <p class="hidden">{{i.id}}</p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                   {% endfor %}
+                    
+                    </tbody>
+                  </table>
+              
+            </div>
+            <div id="analytics" class="hidden">
+                <div class="container row">
+                    <div class="soldHouses">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Bedrooms</th>
+                                    <th scope="col">Yard Size</th>
+                                    <th scope="col">Natural View</th>
+                                    <th scope="col">Conditions</th>
+                                    <th scope="col">Bathrooms</th>
+                                    <th scope="col">Waterfront</th>
+                                    <th scope="col">Bathrooms</th>
+                                    <th scope="col">price</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                {% for i in soldHouses%}
+                                    <tr>
+                                        <th>{{i.bedrooms}}</th>
+                                        <td>{{i.yard}}</td>
+                                        <td>{{i.natural_view}}</td>
+                                        <td>{{i.condition}}</td>
+                                        <td>{{i.bathrooms}}</td>
+                                        <td>{{i.waterfront}}</td>
+                                        <td>{{i.bathrooms}}</td>
+                                        <td class="row"><span class="bi bi-currency-dollar"></span> {{i.price}}</td>
+                                    </tr>
+                               {% endfor %}
+                                
+                                </tbody>
+                              </table>
+                        </div>
+                        
+                    </div>
+                    <div class="revenue">
+                        <div class="total-sales">
+                            <h4 class="text-gray">
+                                REVENUE
+                            </h4>
+                            <h1><span class="bi bi-currency-dollar"></span>{{revenue}}</h1>    
+                        </div>
+                        <br><br>
+                        <div class="revenue-houses ">
+                            <h4 class="text-gray">
+                                TOTAL HOUSES SOLD
+                            </h4>
+                            <h1>{{total_sales}}</h1>
+                        </div>
+    
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static '/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static '/vendor/bootstrap/js/bootstrap.js' %}"></script>
+    <script src="{% static '/vendor/nouislider/nouislider.min.js' %}"></script>
+    <script src="{% static '/vendor/wnumb/wNumb.js' %}"></script>
+    <script src="{% static '/js/rd.js' %}"></script>
+    <script src="{% static '/js/manageHouses.js' %}"></script>
+</body>
+</html>

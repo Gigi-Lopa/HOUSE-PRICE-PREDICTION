@@ -1,0 +1,371 @@
+/* LOGIN SCREEN COMPONENT */
+@font-face {
+font-family: "Poppins";
+src: url(../fonts/Poppins-Light.ttf);
+}
+@font-face {
+font-family: "Poppins Bold";
+src: url(../fonts/Poppins-Bold.ttf);
+}
+*{
+font-family: "Poppins";
+}
+.login__screen{
+  width: 100%;
+  height: 100vh;
+}
+.inline__row{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.inline__col{
+  display: flex;
+  flex-direction: column;
+}
+.show__case{
+  width: 65%;
+  height: 100%;
+  background: url(../images/bg-lg.jpg);
+  background-position: center;
+  background-size: cover;
+}
+.createAccountForm{
+  width: 75%;
+}
+.input__fields{
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form__content{
+  width: 80%;
+  padding: 30px;
+  border-radius: 15px;
+}
+.form__content h3{
+  font-family: "Helvetica";
+  font-weight: bold;
+  padding-bottom: 25px;
+}
+.com-group{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+.form__row{
+  padding: 15px 0px 15px 25px;
+  background-color: #ddd;
+
+  border-radius: 25px;
+}
+.input__field{
+  margin-left: 5px;
+  background-color: transparent;
+}
+.input__field:focus > .form__row span.bi{
+  color: red;
+}
+.input__field{
+  width: 100%;
+  outline: none;
+  color: #3a3a3a;
+  padding-left: 10px;
+  border: none;
+}
+.err__div{
+  width: 100%;
+  text-align: center;
+
+}
+.text_align_left{
+  text-align: left;
+  padding-left: 10px;
+}
+.err__div b {
+  color: red;
+  
+}
+.hidden{
+ 
+  display: none !important;
+
+}
+  .btn__primary{
+    background-color: rgb(11, 11, 53);
+    color: white;
+    font-family: "Helvetica";
+    border-radius: 25px;
+    transition: all ease-in-out 0.3s;
+  }
+  .btn__primary:hover{
+    color: #fff;
+    background-color: rgb(4, 4, 100);
+  }
+  
+  /*CREATE ACCOUNT */
+  
+  .ca__screen{
+    width: 100%;
+    height: 100vh;
+  }
+  .ca__screen_bg{
+    background: url(../images/ca__screen.jpg);
+    background-position: center;
+    background-size: cover;
+   
+  }
+  /* HOME PAGE */
+
+  .main__container{
+    width: 100%;
+    height: 100%;
+    }
+
+  /*NAV BAR*/
+  .navBar{
+    width: 20%;
+    height:100vh;
+    position: fixed;
+    background-color: rgb(11, 11, 53);
+    border-right: 5px solid rgb(2, 169, 199);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+ 
+  }
+  .navBar .header{
+    height: 180x;
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid rgb(2, 169, 199);
+  }
+.nav-options{
+  list-style-type: none;
+}
+.nav-options li{
+  padding: 5px 0px 5px 0px;
+}
+.nav-options li a{
+  text-decoration: none;
+  color: #fff;
+}
+.nav-active {
+  color: rgb(2, 169, 199) !important;
+}
+.navBar .header .userProps h3,
+.navBar .header .userProps p{
+  text-align: center;
+}
+.navs ul {
+  padding-left: unset;
+  padding-top: 15px;
+  list-style-type: none;
+}
+.navs ul li{
+  margin-left: unset !important;
+}
+.content{
+  margin-left: 20%;
+  height: fit-content;
+  background-color: #fff;
+  width: 80%;
+}
+.content .container h1{
+  text-align: center;
+  color: rgb(11, 11, 53);
+  font-family: "Poppins Bold";
+}
+.btn-tabs{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.content .container p {
+  text-align: center;
+}
+.input__form{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding-top: 50px;
+  padding-left: 25px;
+  padding-bottom: 40px;
+}
+.add__house{
+  display: flex;
+  flex-direction: row;
+}
+.row__one,
+.row__two{
+  width: 50%;
+  height: 100%
+}
+.form__col{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+.form__col label{
+  font-family: "Poppins Bold";
+  text-transform: capitalize;
+  
+}
+.row__input{
+  width: 75%;
+  box-sizing:border-box;
+  border:1px solid rgb(2, 169, 199);
+  padding:14px 20px;
+  border-radius:5px;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  -o-border-radius:5px;
+  -ms-border-radius:5px;
+  font-size:14px;
+  outline: none;
+}
+.row__input:focus{
+  border:1px solid rgb(6, 6, 117);
+}
+
+.required{
+  position:relative
+
+}
+label.required:after{
+  content:'*';
+  margin-left:2px;
+  color:#b90000;
+}
+#slider-margin{
+  width: 75%;
+}
+.est__price,
+.reset, 
+.btn-tab 
+{
+  font-family: "Poppins Bold" !important;
+  padding: 10px 25px;
+}
+.btn-tab{
+  background-color: #ddd;
+  margin: 10px;
+}
+.estd__price{
+  background-color: #ddd;
+}
+.btn-tab:hover{
+  color: #fff !important;
+}
+.active, 
+.est__price
+{
+  background-color: rgb(11, 11, 53);
+  color: #fff;
+  margin-right: 15px;
+}
+
+.est__price:hover{
+  background-color: rgb(6, 6, 117);
+  color: #fff;
+}
+.reset{
+  width: 170px;
+  background-color: #ddd;
+}
+.reset:hover{
+  background-color: rgb(11, 11, 53);
+  color: #fff;
+}
+.err__callback{
+  width: 80% !important;
+}
+.reviews{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.price{width: 25%;}
+.reviews__infor{
+  width: 75%;
+
+}
+.price h2,
+.reviews__infor h2{
+  text-align: center;
+  font-family: "Poppins Bold";
+  margin-bottom: 2rem;
+}
+.price{
+
+  margin-top: 10px;
+}
+.price h2{
+  color: rgb(11, 11, 53);
+}
+.estd__price{
+  margin-top: 25px;
+  width: 100%;
+  font-weight: bolder;
+  padding: 15px 5px;
+  border-radius: 15px;
+  color: rgb(11, 11, 53);
+}
+
+.reviews__infor{
+
+ padding: 2rem 2rem 0rem 2rem;
+}
+.overlay{
+  background-color: rgba(0,0,0,0.5);
+  width: 80% !important;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+.add-house-modal{
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 15;
+  width: 80%;
+  height: 80%;
+  overflow-y: auto;
+}
+.sell-house{
+  background-color: #fff;
+  width: 60%;
+  padding: 25px;
+  border-radius: 15px;
+}
+.soldHouses{
+  width: 60%;
+  height: 100vh;
+}
+.revenue{
+  width: 40%;
+  padding:15px;
+
+}
+.btn-danger {
+  background-color: #b90000;
+
+}
+.total-sales,
+.revenue-houses{
+  width : 100%;
+  text-align: center;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.1);
+}

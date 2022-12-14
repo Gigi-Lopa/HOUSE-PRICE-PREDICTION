@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/vendor/bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static '/vendor/bootstrap-icons/bootstrap-icons.css' %}">
+    <link rel="stylesheet" href="{% static '/vendor/boxicons/css/boxicons.css' %}">
+    <link rel="stylesheet" href="{% static '/css/main.css' %}">
+    <link rel="stylesheet" href="{% static '/vendor/nouislider/nouislider.min.css' %}">
+</head>
+</head>
+<body>
+
+    <div class="main__content">
+        <div class="navBar">
+            <div class="container">
+                <div class="header">
+                    <div class="image">
+                        <img src="{% static '/images/profile-img1.jpg' %}" alt="" class="img-fluid rounded">
+                    </div>
+                    <br>
+                    <div class="userProps">
+                        <h3>{{ username }}</h3>
+                        <p>{{ email }}</p>
+                    </div>
+                </div>
+                <br>
+                <ul class="nav-options">
+                    <li><a href="/home/" class="nav-active">Home</a></li>
+                    <li><a href="/manage/houses/">Manage Houses</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="container">
+                <h1>Estimate House Prices</h1>
+                <p> Choose what to predict </p>
+                <div class="btn-tabs">
+                    <div class="btn  btn-tab active">
+                        <b>House Price</b>
+                    </div>
+                    <div class="btn  btn-tab">
+                        <b>Land Price</b>
+                    </div>
+                </div>
+                <form class="input__form hidden"  id="landProps" method="post">
+                    <div class="row__one">
+                        <div class="form__col">
+                            <label for="price">LAND AREA</label>
+                            <input type="number" class="row__input" id = "land" name ="land">
+                            <br>
+                            <div class="button__row">
+                                <button class="btn est__price" type="submit">Predict</button>
+                            </div> 
+                            <br>
+                            <div id="land-price" class="hidden">
+                                <h2>Estimated Price: </h2>
+                                <h3 class="land-price"></h3>
+                            </div> 
+                        </div>
+                    </div>
+                    
+                </form>
+                <form class="input__form" id="houseProps" method="post">
+                    <div class="row__one">
+                        <div class="form__col hidden" id = "price">
+                            <label for="price">HOUSE PRICE</label>
+                            <input type="number" class="row__input" id = "price" name ="price">
+                        </div>
+                        <div class="form__col" id="bedrooms">
+                            <label for="bedrooms">BEDROOMS</label>
+                            <input type="number" class="row__input" id ="bedrooms" name="bedrooms">
+                        </div>        
+                        <div class="form__col">
+                            <label for="sqrlr" class="required">LIVING ROOM <i>SQUARE METRES</i></label>
+                            <input type="number" class="row__input" id = "sqrlr" name ="sqrlr">
+                        </div>
+                        <div class="form__col" id = "yard">
+                            <label for="sqryd">YARD <i>SQUARE METRES</i></label>
+                            <input type="number" class="row__input" id = "sqryd" name ="sqryd">
+                        </div>
+                        <div class="form__col radio__group">
+                            <label for="">NATURAL VIEW</label>
+                            <div class="form-radio-item">
+                                <input type="radio" name="view" value="yes" id="yes">
+                                <label for="cash">Yes</label>
+                                <span class="check"></span>
+                            </div>
+                            <div class="form-radio-item">
+                                <input type="radio" name="view" id="no" value="no"  checked>
+                                <label for="cheque">No</label>
+                                <span class="check"></span>
+                            </div>
+                        </div>
+                        <div class="form__col" id= "house-condition">
+                            <label>CONDITION
+                            </label>
+                            <div class="price_slider ui-slider ui-slider-horizontal">
+                                <div id="slider-margin"></div>
+                                <span class="donate-value" id="value-lower"></span>
+                            </div>
+                        </div>
+                       
+                        
+                    </div>
+                    <div class="row__two">
+                        <div class="form__col">
+                            <label for="bathrooms" class="required">BATHROOMS</label>
+                            <input type="number" class="row__input" id="bathrooms" name="bathrooms">
+                        </div>
+                        <div class="form__col radio__group">
+                            <label for="">WATER FRONT</label>
+                            <div class="form-radio-item">
+                                <input type="radio" name="option" value="yes" id="yes">
+                                <label for="cash">Yes</label>
+                                <span class="check"></span>
+                            </div>
+                            <div class="form-radio-item">
+                                <input type="radio" name="option" id="no" value="no"  checked>
+                                <label for="cheque">No</label>
+                                <span class="check"></span>
+                            </div>
+                        </div>
+                        <div class="form__col">
+                            <label for="yearbuilt" class="required">YEAR BUILT</label>
+                            <input type="number" class="row__input" name = "yearbuilt" id = "yearbuilt"> 
+                        </div>
+                        <div class="form__col">
+                            <label for="yearrenno" class="">YEAR RENOVATED</label>
+                            <input type="number" class="row__input" id = "yearrenno" value="0">
+                        </div>
+                     
+                        <div class="button__row">
+                            <button class="btn est__price" type="submit">Predict</button>
+                            <Button class="btn reset" type="button">Reset</Button>
+                        </div>  
+                        <br><br>        
+                        <div class="alert alert-danger err__callback hidden" role="alert">
+                            An error occured, review your details and try again
+                        </div>              
+                    </div>
+                </form>
+                <div class="reviews hidden">
+                    <div class="price">
+                        <h2>Estimated Price</h2>
+                        <h2 class="estd__price"></h2>
+                    </div>
+                    <div class="reviews__infor">
+                        <h2>Here's Why <span class="bi bi-exclamation-lg"></span></h2>
+                        <div class="reviews__bars">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static '/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static '/vendor/bootstrap/js/bootstrap.js' %}"></script>
+    <script src="{% static '/vendor/nouislider/nouislider.min.js' %}"></script>
+    <script src="{% static '/vendor/wnumb/wNumb.js' %}"></script>
+    <script src="{% static '/js/rd.js' %}"></script>
+    <script src="{% static '/js/home.js' %}"></script>
+</body>
+</html>
